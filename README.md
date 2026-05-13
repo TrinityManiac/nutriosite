@@ -55,59 +55,6 @@ NutrioSite/
 └── README.md
 ```
 
----
-
-# 🚀 Getting Started
-
-## 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/TrinityManiac/nutriosite.git
-```
-
-## 2️⃣ Open the Project
-
-Open the project folder in:
-
-- VS Code
-- Sublime Text
-- Any preferred code editor
-
-## 3️⃣ Run the Website
-
-Simply open:
-
-```bash
-index.html
-```
-
-in your browser.
-
----
-
-# 📸 Website Preview
-
-## 🏠 Home Page
-
-- Clean healthcare themed landing page
-- Navigation bar
-- Service sections
-- Contact information
-- Health awareness content
-
----
-
-# 👨‍💻 Team Members
-
-| Roll No | Student Name |
-|---|---|
-| AM.SC.U4CSE25341 | Patteboyina Yadunandan |
-| AM.SC.U4CSE25351 | Sreedev Puthikumathu Nair |
-| AM.SC.U4CSE25325 | Karan Sanjay |
-| AM.SC.U4CSE25348 | Shilajeet Mukherjee |
-
----
-
 # 🎯 Project Objective
 
 The primary objective of NutrioSite is to create awareness about:
@@ -141,21 +88,6 @@ NutrioSite is fully responsive and works smoothly on:
 🚀 Backend Support  
 🚀 Admin Dashboard  
 
----
-
-# 🤝 Contribution
-
-Contributions are welcome.
-
-If you would like to contribute:
-
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Push to your branch
-5. Open a Pull Request
-
----
 
 # 📜 License
 
