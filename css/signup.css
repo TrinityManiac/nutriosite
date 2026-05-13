@@ -1,0 +1,133 @@
+
+            @media(max-width:768px){
+
+            .container{
+                flex-direction: column;
+                width: 95%;
+            }
+
+            .left,.right{
+                width: 100%;
+                padding: 30px;
+                text-align: center;
+            }
+
+            }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:#f4f7f7;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        .container{
+            width:900px;
+            background:#fff;
+            border-radius:20px;
+            overflow:hidden;
+            display:flex;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+            opacity: 70%;
+        }
+
+        .left{
+            flex:1;
+            background:#1fa78d;
+            color:white;
+            padding:60px 40px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+        }
+
+        .left h1{
+            font-size:42px;
+            margin-bottom:20px;
+        }
+
+        .left p{
+            line-height:1.8;
+            font-size:15px;
+        }
+
+        .right{
+            flex:1;
+            padding:50px 40px;
+        }
+
+        .logo{
+            font-size:30px;
+            font-weight:600;
+            color:#1fa78d;
+            margin-bottom:30px;
+        }
+
+        .right h2{
+            margin-bottom:25px;
+            color:#333;
+        }
+
+        .input-box{
+            margin-bottom:20px;
+        }
+
+        .input-box input{
+            width:100%;
+            padding:14px;
+            border:1px solid #ccc;
+            border-radius:10px;
+            outline:none;
+            font-size:15px;
+        }
+
+        .input-box input:focus{
+            border-color:#1fa78d;
+        }
+
+        .btn{
+            width:100%;
+            padding:14px;
+            border:none;
+            background:#1fa78d;
+            color:white;
+            border-radius:10px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+            opacity: 70% ;
+        }
+
+        .btn:hover{
+            background:#168a74;
+        }
+
+        .bottom-text{
+            margin-top:20px;
+            text-align:center;
+            color:#666;
+        }
+
+        .bottom-text a{
+            color:#1fa78d;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        @media(max-width:768px){
+            .container{
+                flex-direction:column;
+                width:95%;
+            }
+
+            .left{
+                text-align:center;
+            }
+        }
