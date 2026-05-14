@@ -2,16 +2,30 @@
 
 <div align="center">
 
-### 🌿 Stay Safe, Stay Healthy 🌿
+# 🌿 NutrioSite 🌿
+
+### Stay Safe, Stay Healthy
 
 A modern healthcare and nutrition platform designed to help users explore healthy lifestyles, nutrition guidance, hospitals, pharmacies, and healthcare services — all in one place.
 
 <img src="https://img.shields.io/badge/HTML5-Frontend-orange?style=for-the-badge&logo=html5">
 <img src="https://img.shields.io/badge/CSS3-Styling-blue?style=for-the-badge&logo=css3">
 <img src="https://img.shields.io/badge/JavaScript-Interactive-yellow?style=for-the-badge&logo=javascript">
+<img src="https://img.shields.io/badge/TailwindCSS-UI_Framework-38BDF8?style=for-the-badge&logo=tailwind-css">
 <img src="https://img.shields.io/badge/Responsive-Design-green?style=for-the-badge">
 
 </div>
+
+---
+
+# 👨‍💻 Team Members
+
+| Roll No | Student Name |
+|---|---|
+| AM.SC.U4CSE25341 | Patteboyina Yadunandan |
+| AM.SC.U4CSE25351 | Sreedev Puthikumathu Nair |
+| AM.SC.U4CSE25325 | Karan Sanjay |
+| AM.SC.U4CSE25348 | Shilajeet Mukherjee |
 
 ---
 
@@ -76,6 +90,7 @@ The platform offers a clean, responsive, and user-friendly interface where users
 | HTML5 | Website Structure |
 | CSS3 | Styling & Responsiveness |
 | JavaScript | Interactive Features |
+| Tailwind CSS | Blog Page UI Styling |
 | Git & GitHub | Version Control |
 
 ---
@@ -146,17 +161,6 @@ NutrioSite is fully responsive and optimized for:
 🚀 Personalized Nutrition Plans  
 🚀 Admin Panel  
 🚀 Chatbot Support  
-
----
-
-# 👨‍💻 Team Members
-
-| Roll No | Student Name |
-|---|---|
-| AM.SC.U4CSE25341 | Patteboyina Yadunandan |
-| AM.SC.U4CSE25351 | Sreedev Puthikumathu Nair |
-| AM.SC.U4CSE25325 | Karan Sanjay |
-| AM.SC.U4CSE25348 | Shilajeet Mukherjee |
 
 ---
 
