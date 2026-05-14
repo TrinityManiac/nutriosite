@@ -1,4 +1,4 @@
-5<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutrioSite</title>
 
-    <meta name="description" content="Nutriosite helps people find their perfect diet and live healthy lives. Here you can check out our blogs and gain knowledge about the perfect diet  which is best for you and your body."
+    <meta name="description" content="Nutriosite helps people find their perfect diet and live healthy lives. Here you can check out our blogs and gain knowledge about the perfect diet  which is best for you and your body.">
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -24,10 +24,12 @@
     <a href="inde.html" class="logo"> <i class="fas fa-plus-square"></i> NutrioSite </a>
 
     <nav class="navbar">
-        <a href="index.html">home</a>
-        <a href="service.html">services</a>
-        <a href="about.html">about</a>
-        <a href="blogs.html">blogs</a>
+        <a href="/">home</a>
+        <a href="/service.html">services</a>
+        <a href="/about.html">about</a>
+        <a href="/blogs.html">blogs</a>
+        <a href="/contact.html">contact</a>
+        <a href="/signout">sign out</a>
     </nav>
 
     <div id="menu-btn" class="fas fa-bars"></div>
@@ -201,15 +203,15 @@
 
         <div class="box">
             <h3>quick links</h3>
-            <a href="index.html"> <i class="fas fa-chevron-right"></i> home </a>
-            <a href="service.html"> <i class="fas fa-chevron-right"></i> services </a>
-            <a href="about.html"> <i class="fas fa-chevron-right"></i> about </a>
-            <a href="blogs.html"> <i class="fas fa-chevron-right"></i> blogs </a>
+            <a href="/"> <i class="fas fa-chevron-right"></i> home </a>
+            <a href="/service.html"> <i class="fas fa-chevron-right"></i> services </a>
+            <a href="/about.html"> <i class="fas fa-chevron-right"></i> about </a>
+            <a href="/blogs.html"> <i class="fas fa-chevron-right"></i> blogs </a>
         </div>
 
         <div class="box">
             <h3>our services</h3>
-            <a href="blogs.html"> <i class="fas fa-chevron-right"></i>nutrition</a>
+            <a href="/blogs.html"> <i class="fas fa-chevron-right"></i>nutrition</a>
             <a href="https://www.google.co.in/maps/search/hospitals+near+me"> <i class="fas fa-chevron-right"></i>find hospitals </a>
             <a href="https://www.google.co.in/maps/search/Pharmacies"> <i class="fas fa-chevron-right"></i>find pharmacies</a>
             <a href="tel:102"> <i class="fas fa-chevron-right"></i> ambulance service </a>
@@ -217,8 +219,9 @@
 
         <div class="box">
             <h3>contact info</h3>
+            <a href="/contact.html"> <i class="fas fa-phone"></i> contact us </a>
             <a href="mailto:contact.us@nutriosite.com"> <i class="fas fa-envelope"></i> contact.us@nutriosite.com </a>
-            <a href="https://www.google.co.in/maps/place/Sahibzada+Ajit+Singh+Nagar,+Punjab"> <i class="fas fa-map-marker-alt"></i> mohali, india - 140308 </a>
+            <a href="https://www.google.co.in/maps/place/Kollam,+Kerala"> <i class="fas fa-map-marker-alt"></i> kollam, india - 691001 </a>
         </div>
 
     </div>
@@ -230,25 +233,6 @@
 <!-- footer section ends -->
 <!-- custom js file link  -->
 <script src="../js/script.js"></script>
-
-<script>
-window.addEventListener('mouseover', initLandbot, { once: true });
-window.addEventListener('touchstart', initLandbot, { once: true });
-var myLandbot;
-function initLandbot() {
-  if (!myLandbot) {
-    var s = document.createElement('script');s.type = 'text/javascript';s.async = true;
-    s.addEventListener('load', function() {
-      var myLandbot = new Landbot.Livechat({
-        configUrl: 'https://landbot.site/v3/H-1290580-JD2FAI6PBBAOWX9N/index.json',
-      });
-    });
-    s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.js';
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
-  }
-}
-</script>
 
 </body>
 </html>

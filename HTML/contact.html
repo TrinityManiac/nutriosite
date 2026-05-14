@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutrioSite - Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #16a085;
+      --black: #444;
+      --light-color: #777;
+      --box-shadow: .5rem .5rem 0 rgba(22,160,133,.2);
+      --text-shadow: .4rem .4rem 0 rgba(0,0,0,.2);
+      --border: .2rem solid var(--green);
+    }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      outline: none; border: none;
+      transition: all .2s ease-out;
+      text-decoration: none;
+    }
+
+    html { font-size: 62.5%; overflow-x: hidden; scroll-behavior: smooth; }
+
+    body { background: #f5f5f5; }
+
+    /* HEADER */
+    .header {
+      padding: 2rem 9%;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+    }
+
+    .header .logo {
+      font-size: 2.5rem;
+      color: var(--black);
+      text-transform: capitalize;
+    }
+
+    .header .logo i { color: var(--green); }
+
+    .header .navbar a {
+      font-size: 1.7rem;
+      color: var(--light-color);
+      margin-left: 2rem;
+      text-transform: capitalize;
+    }
+
+    .header .navbar a:hover, .header .navbar a.active { color: var(--green); }
+
+    #menu-btn {
+      font-size: 2.5rem;
+      border-radius: .5rem;
+      background: #eee;
+      color: var(--green);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* CONTACT SECTION */
+    .contact {
+      padding: 12rem 9% 4rem;
+      min-height: 100vh;
+    }
+
+    .heading {
+      text-align: center;
+      padding-bottom: 3rem;
+      text-shadow: var(--text-shadow);
+      text-transform: uppercase;
+      color: var(--black);
+      font-size: 5rem;
+      letter-spacing: .4rem;
+    }
+
+    .heading span { color: var(--green); }
+
+    .contact-wrapper {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    /* INFO CARDS */
+    .contact-info {
+      flex: 1 1 28rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: #fff;
+      border: var(--border);
+      border-radius: .5rem;
+      box-shadow: var(--box-shadow);
+      padding: 2.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .info-card i {
+      font-size: 2.8rem;
+      color: var(--green);
+      margin-top: .3rem;
+      flex-shrink: 0;
+    }
+
+    .info-card h4 {
+      font-size: 1.8rem;
+      color: var(--black);
+      text-transform: capitalize;
+      margin-bottom: .4rem;
+    }
+
+    .info-card p, .info-card a {
+      font-size: 1.4rem;
+      color: var(--light-color);
+      line-height: 1.8;
+      text-transform: none;
+    }
+
+    .info-card a:hover { color: var(--green); }
+
+    /* FORM */
+    .contact-form {
+      flex: 1 1 42rem;
+      background: #fff;
+      border: var(--border);
+      border-radius: .5rem;
+      box-shadow: var(--box-shadow);
+      padding: 3.5rem;
+    }
+
+    .contact-form h3 {
+      font-size: 2.8rem;
+      color: var(--black);
+      text-transform: capitalize;
+      margin-bottom: 2.5rem;
+      text-shadow: var(--text-shadow);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1 1 18rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .form-group.full { flex: 1 1 100%; }
+
+    .form-group label {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--black);
+      text-transform: capitalize;
+      margin-bottom: .6rem;
+      font-weight: 500;
+    }
+
+    .form-group label span { color: var(--green); }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      font-size: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      color: var(--black);
+      background: #f9f9f9;
+      border: .2rem solid #ddd;
+      border-radius: .5rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 12rem; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 .3rem rgba(22,160,133,.12);
+      background: #fff;
+    }
+
+    /* Validation states */
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #e74c3c;
+      box-shadow: 0 0 0 .3rem rgba(231,76,60,.12);
+    }
+
+    .form-group input.valid,
+    .form-group select.valid,
+    .form-group textarea.valid {
+      border-color: var(--green);
+    }
+
+    .error-msg {
+      display: none;
+      font-size: 1.2rem;
+      color: #e74c3c;
+      margin-top: .5rem;
+    }
+
+    .error-msg.show { display: block; }
+
+    /* Character count */
+    .char-count {
+      font-size: 1.1rem;
+      color: var(--light-color);
+      text-align: right;
+      margin-top: .4rem;
+    }
+
+    /* Submit btn */
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: .5rem;
+      padding: 1.2rem 2rem;
+      background: #fff;
+      border: var(--border);
+      border-radius: .5rem;
+      box-shadow: var(--box-shadow);
+      color: var(--green);
+      cursor: pointer;
+      font-size: 1.7rem;
+      font-family: 'Poppins', sans-serif;
+      text-transform: capitalize;
+      font-weight: 500;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .submit-btn span {
+      padding: .7rem 1.2rem;
+      border-radius: .5rem;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .submit-btn:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .submit-btn:hover span {
+      background: #fff;
+      color: var(--green);
+    }
+
+    /* Success message */
+    .success-banner {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      background: #eafaf1;
+      border: .2rem solid var(--green);
+      border-radius: .5rem;
+      padding: 2rem 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .success-banner.show { display: flex; }
+
+    .success-banner i {
+      font-size: 3rem;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .success-banner p {
+      font-size: 1.5rem;
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    .success-banner p strong { color: var(--green); }
+
+    /* FOOTER */
+    .footer { padding: 3rem 9%; background: #fff; }
+
+    .footer .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+      gap: 2rem;
+    }
+
+    .footer .box-container .box h3 {
+      font-size: 2.5rem;
+      color: var(--black);
+      padding: 1rem 0;
+      text-transform: capitalize;
+    }
+
+    .footer .box-container .box a {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--light-color);
+      padding: .8rem 0;
+      text-transform: capitalize;
+    }
+
+    .footer .box-container .box a i {
+      padding-right: .5rem;
+      color: var(--green);
+    }
+
+    .footer .box-container .box a:hover { color: var(--green); }
+    .footer .box-container .box a:hover i { padding-right: 1.5rem; }
+
+    .footer .credit {
+      padding: 1.5rem 0 0;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--light-color);
+      border-top: .1rem solid rgba(0,0,0,.15);
+      text-transform: capitalize;
+    }
+
+    .footer .credit span { color: var(--green); }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+      html { font-size: 55%; }
+      .header { padding: 2rem; }
+      .contact { padding: 11rem 2rem 3rem; }
+      .footer { padding: 3rem 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      #menu-btn { display: initial; }
+
+      .header .navbar {
+        position: absolute;
+        top: 115%; right: 2rem;
+        border-radius: .5rem;
+        box-shadow: var(--box-shadow);
+        width: 30rem;
+        border: var(--border);
+        background: #fff;
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: top right;
+        transition: none;
+      }
+
+      .header .navbar.active {
+        transform: scale(1);
+        opacity: 1;
+        transition: .2s ease-out;
+      }
+
+      .header .navbar a {
+        font-size: 2rem;
+        display: block;
+        margin: 2.5rem;
+      }
+
+      .contact-form { padding: 2.5rem; }
+    }
+
+    @media (max-width: 450px) { html { font-size: 50%; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="index.html" class="logo"><i class="fas fa-plus-square"></i> NutrioSite</a>
+    <nav class="navbar">
+        <a href="/">home</a>
+        <a href="/service.html">services</a>
+        <a href="/about.html">about</a>
+        <a href="/blogs.html">blogs</a>
+        <a href="/contact.html">contact</a>
+        <a href="/signout">sign out</a>
+    </nav>
+  <div id="menu-btn" class="fas fa-bars"></div>
+</header>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+
+  <h1 class="heading">contact <span>us</span></h1>
+
+  <div class="contact-wrapper">
+
+    <!-- Info Cards -->
+    <div class="contact-info">
+      <div class="info-card">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h4>email us</h4>
+          <a href="mailto:contact.us@nutriosite.com">contact.us@nutriosite.com</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <h4>our location</h4>
+          <a href="https://www.google.co.in/maps/place/Kollam,+Kerala"> kollam, india - 691001 </a>
+        </div>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-ambulance"></i>
+        <div>
+          <h4>ambulance</h4>
+          <a href="tel:102">Call 102 — Emergency</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <i class="fas fa-clock"></i>
+        <div>
+          <h4>response time</h4>
+          <p>We typically reply within 24 hours on working days.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="contact-form">
+      <h3>send us a message</h3>
+
+      <div id="contactForm">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name <span>*</span></label>
+            <input type="text" id="fname" placeholder="e.g. Arjun">
+            <span class="error-msg" id="fname-err">Please enter your first name.</span>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name <span>*</span></label>
+            <input type="text" id="lname" placeholder="e.g. Sharma">
+            <span class="error-msg" id="lname-err">Please enter your last name.</span>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label for="email">Email Address <span>*</span></label>
+          <input type="email" id="email" placeholder="you@example.com">
+          <span class="error-msg" id="email-err">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group full">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+91 98765 43210">
+          <span class="error-msg" id="phone-err">Enter a valid 10-digit phone number.</span>
+        </div>
+
+        <div class="form-group full">
+          <label for="subject">Subject <span>*</span></label>
+          <select id="subject">
+            <option value="">-- Select a subject --</option>
+            <option value="nutrition">Nutrition Advice</option>
+            <option value="diet">Diet Plans</option>
+            <option value="hospitals">Find Hospitals</option>
+            <option value="pharmacies">Find Pharmacies</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="error-msg" id="subject-err">Please select a subject.</span>
+        </div>
+
+        <div class="form-group full">
+          <label for="message">Message <span>*</span></label>
+          <textarea id="message" placeholder="Write your message here..." maxlength="500"></textarea>
+          <div class="char-count"><span id="charCount">0</span> / 500</div>
+          <span class="error-msg" id="message-err">Message must be at least 20 characters.</span>
+        </div>
+
+        <button class="submit-btn" onclick="handleSubmit()">
+          send message <span class="fas fa-paper-plane"></span>
+        </button>
+
+      </div>
+
+      <div class="success-banner" id="successBanner">
+        <i class="fas fa-check-circle"></i>
+        <p>
+          <strong>Message sent successfully!</strong><br>
+          Thank you for reaching out. We'll get back to you at your email within 24 hours.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <div class="box-container">
+    <div class="box">
+      <h3>quick links</h3>
+      <a href="/"><i class="fas fa-chevron-right"></i> home</a>
+      <a href="/service.html"><i class="fas fa-chevron-right"></i> services</a>
+      <a href="/about.html"><i class="fas fa-chevron-right"></i> about</a>
+      <a href="/blogs.html"><i class="fas fa-chevron-right"></i> blogs</a>
+    </div>
+    <div class="box">
+      <h3>our services</h3>
+      <a href="/blogs.html"><i class="fas fa-chevron-right"></i> nutrition</a>
+      <a href="https://www.google.co.in/maps/search/hospitals+near+me"><i class="fas fa-chevron-right"></i> find hospitals</a>
+      <a href="https://www.google.co.in/maps/search/Pharmacies"><i class="fas fa-chevron-right"></i> find pharmacies</a>
+      <a href="tel:102"><i class="fas fa-chevron-right"></i> ambulance service</a>
+    </div>
+    <div class="box">
+      <h3>contact info</h3>
+      <a href="/contact.html"><i class="fas fa-phone"></i> contact us</a>
+      <a href="mailto:contact.us@nutriosite.com"><i class="fas fa-envelope"></i> contact.us@nutriosite.com</a>
+      <a href="https://www.google.co.in/maps/place/Kollam,+Kerala"><i class="fas fa-map-marker-alt"></i> kollam, india - 691001</a>
+    </div>
+  </div>
+  <div class="credit">created by <span>Team Nutriosite</span> | all rights reserved</div>
+</section>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const navbar = document.querySelector('.header .navbar');
+  menuBtn.addEventListener('click', () => navbar.classList.toggle('active'));
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !navbar.contains(e.target))
+      navbar.classList.remove('active');
+  });
+
+  // Character counter
+  const msgEl = document.getElementById('message');
+  msgEl.addEventListener('input', () => {
+    document.getElementById('charCount').textContent = msgEl.value.length;
+  });
+
+  // Helpers
+  const getEl = id => document.getElementById(id);
+  const showErr = (id, msg) => {
+    const el = getEl(id + '-err');
+    el.textContent = msg;
+    el.classList.add('show');
+    getEl(id).classList.add('error');
+    getEl(id).classList.remove('valid');
+  };
+  const clearErr = id => {
+    getEl(id + '-err').classList.remove('show');
+    getEl(id).classList.remove('error');
+    getEl(id).classList.add('valid');
+  };
+
+  // Live validation
+  ['fname','lname','email','phone','subject','message'].forEach(id => {
+    getEl(id).addEventListener('blur', () => validateField(id));
+    getEl(id).addEventListener('input', () => {
+      if (getEl(id).classList.contains('error')) validateField(id);
+    });
+  });
+
+  function validateField(id) {
+    const val = getEl(id).value.trim();
+    if (id === 'fname' || id === 'lname') {
+      if (!val) { showErr(id, `Please enter your ${id === 'fname' ? 'first' : 'last'} name.`); return false; }
+      if (val.length < 2) { showErr(id, 'Must be at least 2 characters.'); return false; }
+    }
+    if (id === 'email') {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!val) { showErr(id, 'Email address is required.'); return false; }
+      if (!re.test(val)) { showErr(id, 'Please enter a valid email address.'); return false; }
+    }
+    if (id === 'phone' && val) {
+      const re = /^[+]?[\d\s\-()]{10,15}$/;
+      if (!re.test(val)) { showErr(id, 'Enter a valid phone number (10–15 digits).'); return false; }
+    }
+    if (id === 'subject') {
+      if (!val) { showErr(id, 'Please select a subject.'); return false; }
+    }
+    if (id === 'message') {
+      if (!val) { showErr(id, 'Message is required.'); return false; }
+      if (val.length < 20) { showErr(id, 'Message must be at least 20 characters.'); return false; }
+    }
+    clearErr(id);
+    return true;
+  }
+
+  function handleSubmit() {
+    const fields = ['fname','lname','email','subject','message'];
+    const optionals = ['phone'];
+
+    // Validate phone if filled
+    if (getEl('phone').value.trim()) {
+      fields.push('phone'); // include in validation since filled
+    }
+
+    let valid = true;
+    fields.forEach(id => { if (!validateField(id)) valid = false; });
+    // Re-check phone separately
+    if (getEl('phone').value.trim() && !validateField('phone')) valid = false;
+
+    if (!valid) return;
+
+    // Simulate submission
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    setTimeout(() => {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successBanner').classList.add('show');
+    }, 1200);
+  }
+</script>
+
+</body>
+</html>

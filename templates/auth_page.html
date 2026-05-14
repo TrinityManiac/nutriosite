@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NutrioSite</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #16a085;
+  --black: #444;
+  --light-color: #777;
+  --box-shadow: .5rem .5rem 0 rgba(22,160,133,.2);
+  --text-shadow: .4rem .4rem 0 rgba(0,0,0,.2);
+  --border: .2rem solid var(--green);
+}
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  outline: none; border: none;
+  text-transform: capitalize;
+  transition: all .2s ease-out;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+html { font-size: 62.5%; overflow-x: hidden; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+/* Blobs */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .18;
+  animation: blobFloat 8s ease-in-out infinite;
+  z-index: 0;
+}
+.blob-1 { width: 45rem; height: 45rem; background: var(--green); top: -10%; left: -10%; animation-delay: 0s; }
+.blob-2 { width: 35rem; height: 35rem; background: #1abc9c; bottom: -10%; right: -5%; animation-delay: 2s; }
+.blob-3 { width: 25rem; height: 25rem; background: #16a085; top: 40%; left: 45%; animation-delay: 4s; }
+@keyframes blobFloat {
+  0%,100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+/* Card */
+.auth-wrapper { position: relative; z-index: 1; width: 42rem; }
+.auth-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 2rem 5rem rgba(0,0,0,.1), var(--box-shadow);
+  border: var(--border);
+  overflow: hidden;
+  animation: slideUp .6s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(4rem) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Tabs */
+.tabs { display: flex; background: #f5f5f5; border-bottom: var(--border); }
+.tab-btn {
+  flex: 1;
+  padding: 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--light-color);
+  cursor: pointer;
+  background: transparent;
+  text-transform: capitalize;
+  position: relative;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: .3rem;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.tab-btn.active { color: var(--green); background: #fff; }
+.tab-btn.active::after { transform: scaleX(1); }
+
+/* Form panels */
+.form-panel {
+  padding: 3.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 1.8rem;
+  animation: fadeIn .4s ease both;
+}
+.form-panel.active { display: flex; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(2rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Site logo inside card */
+.site-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  margin-bottom: -.4rem;
+}
+.site-logo i { font-size: 2.8rem; color: var(--green); }
+.site-logo span { font-size: 2.6rem; font-weight: 700; color: var(--black); letter-spacing: .05rem; }
+
+/* Form heading */
+.form-logo { text-align: center; }
+.form-logo h2 { font-size: 2.2rem; color: var(--black); text-shadow: var(--text-shadow); margin-top: .2rem; }
+.form-logo p  { font-size: 1.35rem; color: var(--light-color); margin-top: .3rem; }
+
+/* Inputs */
+.input-group label { display: block; font-size: 1.3rem; color: var(--light-color); margin-bottom: .5rem; font-weight: 500; }
+.input-wrap { position: relative; display: flex; align-items: center; }
+.input-wrap i.prefix { position: absolute; left: 1.4rem; color: var(--light-color); font-size: 1.5rem; pointer-events: none; }
+.input-wrap input {
+  width: 100%;
+  padding: 1.2rem 1.4rem 1.2rem 4rem;
+  font-size: 1.5rem;
+  color: var(--black);
+  background: #f9f9f9;
+  border: .15rem solid #ddd;
+  border-radius: .7rem;
+  font-family: 'Poppins', sans-serif;
+  text-transform: none;
+}
+.input-wrap input:focus { border-color: var(--green); background: #fff; box-shadow: 0 0 0 .3rem rgba(22,160,133,.1); }
+.input-wrap:has(input:focus) i.prefix { color: var(--green); }
+.input-wrap .toggle-pw { position: absolute; right: 1.4rem; color: var(--light-color); font-size: 1.5rem; cursor: pointer; }
+.input-wrap .toggle-pw:hover { color: var(--green); }
+.input-wrap input.invalid { border-color: #e74c3c !important; }
+.input-wrap input.valid   { border-color: #27ae60 !important; }
+
+/* Strength */
+.strength-bar { display: flex; gap: .4rem; margin-top: .6rem; }
+.strength-bar span { flex: 1; height: .4rem; border-radius: 1rem; background: #ddd; }
+.strength-label { font-size: 1.1rem; color: var(--light-color); margin-top: .3rem; }
+
+/* Options */
+.options-row { display: flex; align-items: center; justify-content: space-between; font-size: 1.3rem; }
+.remember-me { display: flex; align-items: center; gap: .6rem; cursor: pointer; color: var(--light-color); }
+.remember-me input[type="checkbox"] { width: 1.6rem; height: 1.6rem; accent-color: var(--green); cursor: pointer; }
+.forgot-link { color: var(--green); font-size: 1.3rem; font-weight: 500; }
+.forgot-link:hover { text-decoration: underline; }
+
+/* Button — site style */
+.submit-btn {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  background: #fff;
+  color: var(--green);
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: .5rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  margin-top: .5rem;
+}
+.submit-btn span { padding: .7rem 1rem; border-radius: .5rem; background: var(--green); color: #fff; margin-left: .5rem; display: flex; align-items: center; }
+.submit-btn::before { content: ''; position: absolute; inset: 0; background: rgba(22,160,133,.07); transform: translateX(-100%) skewX(-15deg); transition: transform .5s ease; }
+.submit-btn:hover::before { transform: translateX(120%) skewX(-15deg); }
+.submit-btn:hover { background: var(--green); color: #fff; }
+.submit-btn:hover span { color: var(--green); background: #fff; margin-left: 1rem; }
+.submit-btn:active { transform: scale(.98); }
+.submit-btn:disabled { opacity: .7; cursor: not-allowed; }
+
+/* Errors */
+.err-msg { font-size: 1.15rem; color: #e74c3c; margin-top: .3rem; display: none; }
+.err-msg.show { display: block; animation: shake .3s ease; }
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 3rem; right: 3rem;
+  background: var(--green);
+  color: #fff;
+  padding: 1.2rem 2rem;
+  border-radius: .7rem;
+  font-size: 1.5rem;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  z-index: 9999;
+  transform: translateY(10rem);
+  opacity: 0;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.error { background: #e74c3c; }
+
+@media (max-width: 768px) {
+  html { font-size: 55%; }
+  .auth-wrapper { width: 94vw; }
+}
+@media (max-width: 450px) {
+  html { font-size: 50%; }
+  .form-panel { padding: 2.5rem 2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <div class="tabs">
+      <button class="tab-btn {% if active_tab == 'signin' %}active{% endif %}" data-tab="signin">Sign In</button>
+      <button class="tab-btn {% if active_tab == 'signup' %}active{% endif %}" data-tab="signup">Sign Up</button>
+    </div>
+
+    <!-- SIGN IN -->
+    <div class="form-panel {% if active_tab == 'signin' %}active{% endif %}" id="signin">
+      <form action="/signin" method="POST" id="signin-form">
+        <div class="site-logo">
+          <i class="fas fa-plus-square"></i>
+          <span>NutrioSite</span>
+        </div>
+        <div class="form-logo">
+          <h2>Welcome Back</h2>
+          <p>Sign in to continue to your account</p>
+        </div>
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope prefix"></i>
+            <input type="email" name="email" id="si-email" placeholder="you@example.com" value="{{ email if active_tab == 'signin' else '' }}">
+          </div>
+          <span class="err-msg" id="si-email-err">Please enter a valid email.</span>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock prefix"></i>
+            <input type="password" name="password" id="si-pass" placeholder="Enter your password">
+            <i class="fas fa-eye toggle-pw" data-target="si-pass"></i>
+          </div>
+          <span class="err-msg" id="si-pass-err">Password must be at least 8 characters.</span>
+        </div>
+
+        <div class="options-row">
+          <label class="remember-me"><input type="checkbox" id="remember"> Remember me</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="submit-btn" id="signin-btn">
+          Sign In <span class="fas fa-chevron-right"></span>
+        </button>
+      </form>
+    </div>
+
+    <!-- SIGN UP -->
+    <div class="form-panel {% if active_tab == 'signup' %}active{% endif %}" id="signup">
+      <form action="/signup" method="POST" id="signup-form">
+        <div class="site-logo">
+          <i class="fas fa-plus-square"></i>
+          <span>NutrioSite</span>
+        </div>
+        <div class="form-logo">
+          <h2>Create Account</h2>
+          <p>Join NutrioSite — it's free!</p>
+        </div>
+
+        <div class="input-group">
+          <label>Full Name</label>
+          <div class="input-wrap">
+            <i class="fas fa-user prefix"></i>
+            <input type="text" name="name" id="su-name" placeholder="John Doe" value="{{ name if active_tab == 'signup' else '' }}">
+          </div>
+          <span class="err-msg" id="su-name-err">Name must be at least 2 characters.</span>
+        </div>
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope prefix"></i>
+            <input type="email" name="email" id="su-email" placeholder="you@example.com" value="{{ email if active_tab == 'signup' else '' }}">
+          </div>
+          <span class="err-msg" id="su-email-err">Please enter a valid email.</span>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock prefix"></i>
+            <input type="password" name="password" id="su-pass" placeholder="Create a strong password">
+            <i class="fas fa-eye toggle-pw" data-target="su-pass"></i>
+          </div>
+          <div class="strength-bar">
+            <span id="s1"></span><span id="s2"></span><span id="s3"></span><span id="s4"></span>
+          </div>
+          <div class="strength-label" id="strength-label">Password strength</div>
+          <span class="err-msg" id="su-pass-err">Password must be at least 8 characters.</span>
+        </div>
+
+        <div class="input-group">
+          <label>Confirm Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock prefix"></i>
+            <input type="password" name="confirm_password" id="su-confirm" placeholder="Repeat your password">
+            <i class="fas fa-eye toggle-pw" data-target="su-confirm"></i>
+          </div>
+          <span class="err-msg" id="su-confirm-err">Passwords do not match.</span>
+        </div>
+
+        <button type="submit" class="submit-btn" id="signup-btn">
+          Create Account <span class="fas fa-chevron-right"></span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <span id="toast-msg">Success!</span>
+</div>
+
+<script>
+  function toast(msg, isErr = false) {
+    const t = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    t.className = 'toast' + (isErr ? ' error' : '');
+    t.querySelector('i').className = isErr ? 'fas fa-times-circle' : 'fas fa-check-circle';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // Handle Flask flash messages
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      document.addEventListener('DOMContentLoaded', () => {
+        {% for category, message in messages %}
+          toast("{{ message }}", {{ 'true' if category == 'error' else 'false' }});
+        {% endfor %}
+      });
+    {% endif %}
+  {% endwith %}
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const t = document.getElementById(btn.dataset.tab);
+      t.classList.add('active');
+      t.style.animation = 'none'; t.offsetHeight; t.style.animation = '';
+    });
+  });
+
+  document.querySelectorAll('.toggle-pw').forEach(eye => {
+    eye.addEventListener('click', () => {
+      const inp = document.getElementById(eye.dataset.target);
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+      eye.classList.toggle('fa-eye');
+      eye.classList.toggle('fa-eye-slash');
+    });
+  });
+
+  const suPass = document.getElementById('su-pass');
+  const bars = ['s1','s2','s3','s4'].map(id => document.getElementById(id));
+  const strengthLabel = document.getElementById('strength-label');
+  const colors = ['#e74c3c','#e67e22','#f1c40f','#27ae60'];
+  const labels = ['Weak','Fair','Good','Strong'];
+  suPass.addEventListener('input', () => {
+    const v = suPass.value;
+    let sc = 0;
+    if (v.length >= 6) sc++;
+    if (v.length >= 10) sc++;
+    if (/[A-Z]/.test(v) && /[0-9]/.test(v)) sc++;
+    if (/[^A-Za-z0-9]/.test(v)) sc++;
+    bars.forEach((b,i) => b.style.background = i < sc ? colors[sc-1] : '#ddd');
+    strengthLabel.textContent = sc > 0 ? labels[sc-1] : 'Password strength';
+    strengthLabel.style.color = sc > 0 ? colors[sc-1] : 'var(--light-color)';
+  });
+
+  const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function setValid(inp, ok) { inp.classList.toggle('valid', ok); inp.classList.toggle('invalid', !ok); }
+  function showErr(id, show) { document.getElementById(id).classList.toggle('show', show); }
+
+  const siEmail = document.getElementById('si-email'), siPass = document.getElementById('si-pass');
+  siEmail.addEventListener('blur', () => { const ok = emailRx.test(siEmail.value); setValid(siEmail, ok); showErr('si-email-err', !ok && siEmail.value); });
+  siPass.addEventListener('blur',  () => { const ok = siPass.value.length >= 8;    setValid(siPass, ok);  showErr('si-pass-err',  !ok && siPass.value);  });
+
+  document.getElementById('signin-form').addEventListener('submit', function(e) {
+    const eOk = emailRx.test(siEmail.value), pOk = siPass.value.length >= 8;
+    setValid(siEmail, eOk); showErr('si-email-err', !eOk);
+    setValid(siPass,  pOk); showErr('si-pass-err',  !pOk);
+    if (!eOk || !pOk) {
+      e.preventDefault();
+      toast('Please fix the errors before signing in.', true);
+    } else {
+      const btn = document.getElementById('signin-btn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in... <span></span>';
+      btn.disabled = true;
+    }
+  });
+
+  const suName = document.getElementById('su-name'), suEmail = document.getElementById('su-email'), suConfirm = document.getElementById('su-confirm');
+  suName.addEventListener('blur',    () => { const ok = suName.value.trim().length >= 2; setValid(suName, ok); showErr('su-name-err', !ok && suName.value); });
+  suEmail.addEventListener('blur',   () => { const ok = emailRx.test(suEmail.value);     setValid(suEmail, ok); showErr('su-email-err', !ok && suEmail.value); });
+  suPass.addEventListener('blur',    () => { const ok = suPass.value.length >= 8;         setValid(suPass, ok); showErr('su-pass-err', !ok && suPass.value); });
+  suConfirm.addEventListener('blur', () => { const ok = suConfirm.value === suPass.value && !!suConfirm.value; setValid(suConfirm, ok); showErr('su-confirm-err', !ok && suConfirm.value); });
+
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    const nOk = suName.value.trim().length >= 2, eOk = emailRx.test(suEmail.value),
+          pOk = suPass.value.length >= 8, cOk = suConfirm.value === suPass.value && !!suConfirm.value;
+    setValid(suName, nOk);    showErr('su-name-err',    !nOk);
+    setValid(suEmail, eOk);   showErr('su-email-err',   !eOk);
+    setValid(suPass, pOk);    showErr('su-pass-err',    !pOk);
+    setValid(suConfirm, cOk); showErr('su-confirm-err', !cOk);
+    if (!(nOk && eOk && pOk && cOk)) {
+      e.preventDefault();
+      toast('Please fix the errors above.', true);
+    } else {
+      const btn = document.getElementById('signup-btn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating... <span></span>';
+      btn.disabled = true;
+    }
+  });
+</script>
+</body>
+</html>
