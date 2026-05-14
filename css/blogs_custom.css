@@ -1,0 +1,6 @@
+* { font-family: 'Poppins', sans-serif; }
+.box:hover .blog-img { transform: scale(1.2); }
+.btn:hover { background: #16a085; color: #fff; }
+.btn:hover span { background: #fff; color: #16a085; margin-left: 1rem; }
+.nav-link:hover { color: #16a085; }
+.footer-link:hover i { padding-right: 2rem; }
